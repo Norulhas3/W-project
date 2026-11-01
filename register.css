@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #07110e;
+    color: #ecfdf5;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.reg-wrapper {
+    width: 82%;
+    max-width: 860px;
+    margin: 32px auto;
+}
+
+h2 ~ p {
+    color: #6ee7b7;
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+form fieldset {
+    background-color: rgba(11, 31, 25, 0.85);
+    border: 1px solid #059669;
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+fieldset > legend {
+    font-family: 'Orbitron', sans-serif;
+    color: #34d399;
+    background-color: #06281e;
+    border: 1px solid #10b981;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-group > label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #d1fae5;
+}
+
+label + input,
+label + select,
+label + textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 6px;
+    border: 2px solid #1e3a2f;
+    background-color: #040d0a;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] + span,
+input[type="checkbox"] + span {
+    margin-left: 8px;
+    color: #e2e8f0;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.choice-row {
+    margin-bottom: 8px;
+}
+
+input[readonly] {
+    background-color: #11221c;
+    color: #34d399;
+    border-style: dashed;
+    cursor: not-allowed;
+}
+
+input[disabled] {
+    background-color: #1f2937;
+    color: #9ca3af;
+    border-color: #374151;
+    cursor: not-allowed;
+}
+
+input[type="color"] {
+    height: 46px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    accent-color: #10b981;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    background-color: #091d17;
+    border: 2px dashed #10b981;
+    padding: 10px;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #34d399;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00f2fe;
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.45);
+}
+
+input[required]:valid,
+textarea[required]:valid,
+select[required]:valid {
+    border-left: 6px solid #10b981;
+}
+
+input[required]:invalid,
+textarea[required]:invalid {
+    border-left: 6px solid #f43f5e;
+}
+
+.submit-btn {
+    background: linear-gradient(90deg, #10b981, #059669);
+    color: #04130e;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #34d399, #10b981);
+    box-shadow: 0 0 18px rgba(16, 185, 129, 0.6);
+}
+
+.req-label::after {
+    content: " *";
+    color: #f43f5e;
+    font-weight: 700;
+}
+
+fieldset > legend::before {
+    content: ">> ";
+    color: #10b981;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #64748b;
+    font-style: italic;
+}
+.group-label { display: block; font-weight: 600; margin-bottom: 6px; color: #d1fae5; }
+.choice { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+input[type="radio"], input[type="checkbox"] { accent-color: #10b981; width: 18px; height: 18px; }
+.steps { display: flex; gap: 12px; list-style: none; padding: 0; margin: 0 0 20px; counter-reset: s; }
+.steps li { counter-increment: s; flex: 1; padding: 8px 12px; border: 1px solid #059669; border-radius: 6px; color: #a7f3d0; text-align: center; font-style: normal; }
+.steps li::before { content: counter(s) ". "; color: #10b981; font-weight: 700; }
+fieldset { transition: border-color .3s, transform .3s; }
+fieldset:hover, fieldset:focus-within { border-color: #34d399; transform: translateY(-2px); }
+input[required]:invalid:not(:placeholder-shown):not(:focus) { animation: shake .35s; }
+@keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+.submit-btn:focus-visible{box-shadow:0 0 18px rgba(0,242,254,.8)}
+
+
+/* ==========================================================
+   REGISTER PAGE: header, navigation and footer (own styles)
+   ========================================================== */
+
+#main-header {
+    background: linear-gradient(180deg, #06281e 0%, #07110e 100%);
+    border-bottom: 3px solid #10b981;
+    padding: 24px 40px;
+}
+
+.site-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #ecfdf5;
+    margin: 0;
+}
+
+.neon-accent { color: #10b981; }
+
+.tagline {
+    color: #6ee7b7;
+    margin: 6px 0 0 0;
+}
+
+/* Navigation: green bar with a thick left border (different from the home and media pages) */
+.navbar {
+    margin-top: 16px;
+    background-color: #0b1f19;
+    border-left: 6px solid #10b981;
+    padding: 12px 18px;
+}
+
+.nav-list { list-style: none; margin: 0; padding: 0; }
+.nav-item { display: inline-block; margin: 4px 6px 4px 0; }
+
+.nav-link {
+    color: #a7f3d0;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover,
+.active-link {
+    background-color: #10b981;
+    color: #051b14;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #34d399;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #059669;
+    color: #6ee7b7;
+}
+
+.inline-link { color: #34d399; font-weight: 700; text-decoration: none; }
+
+/* ===== Register page animations ===== */
+#main-header { animation: fadeDown 0.8s ease-out both; }
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-30px); } }
+
+.submit-btn { position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+.submit-btn:active { transform: scale(0.96); }
+.submit-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s;
+}
+.submit-btn:hover::after { left: 140%; }
+
+.steps li { transition: transform 0.3s, background-color 0.3s; }
+.steps li:hover { transform: translateY(-4px); background-color: rgba(16, 185, 129, 0.15); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

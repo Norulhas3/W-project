@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Battlegrounds League | Squad Registration</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body id="top">
+
+    <!-- Matching Header Structure -->
+    <header id="main-header">
+        <div class="brand-container">
+            <h1 class="site-title">CBL 2026 // <span class="neon-accent">SQUAD REGISTRATION</span></h1>
+            <p class="tagline">Official Team Entry Portal — Lock in Your Season 5 Qualifier Slot</p>
+        </div>
+
+        <!-- Matching Navigation Bar -->
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="home.html" class="nav-link">01. Home</a></li>
+                <li class="nav-item"><a href="media.html" class="nav-link">02. Media &amp; Intel</a></li>
+                <li class="nav-item"><a href="register.html" class="nav-link active-link">03. Register</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">04. Services</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link">05. Portfolio</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">06. Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="reg-wrapper">
+        <section class="form-section">
+            <h2>Official Team Entry Form</h2>
+            <ol class="steps"><li>Credentials</li><li>Schedule</li><li>Declaration</li></ol>
+            <p>Fields marked with a red asterisk are required. Green borders indicate valid entries.</p>
+
+            <form action="#" method="post" enctype="multipart/form-data" class="squad-form">
+
+                <!-- Fieldset 1: Credentials -->
+                <fieldset>
+                    <legend>1. Tournament Credentials &amp; Captain Identity</legend>
+
+                    <div class="form-group">
+                        <label for="tournament-code">Official Tournament Code (Readonly)</label>
+                        <input type="text" id="tournament-code" name="tournament_code" value="CBL-2026-S5-PK" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invite-slot">Direct Pro-Seed Bypass Status (Disabled)</label>
+                        <input type="text" id="invite-slot" name="invite_slot" value="Locked — Standard Open Qualifier Entry" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="squad-name" class="req-label">Squad Name (3 to 20 characters)</label>
+                        <input type="text" id="squad-name" name="squad_name" placeholder="e.g., Lahore Falcons" minlength="3" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lobby-pin" class="req-label">Team Lobby Management Password (6 to 16 characters)</label>
+                        <input type="password" id="lobby-pin" name="lobby_pin" placeholder="Enter a secure team PIN" minlength="6" maxlength="16" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="captain-email" class="req-label">Squad Captain Official Email</label>
+                        <input type="email" id="captain-email" name="captain_email" placeholder="captain@university.edu.pk" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stream-url" class="req-label">Team Twitch or YouTube Channel URL</label>
+                        <input type="url" id="stream-url" name="stream_url" placeholder="https://youtube.com/@yourteam" required>
+                    </div>
+                </fieldset>
+
+                <!-- Fieldset 2: Configuration -->
+                <fieldset>
+                    <legend>2. Qualifier Schedule &amp; Squad Configuration</legend>
+
+                    <div class="form-group">
+                        <label for="qualifier-date" class="req-label">Preferred Qualifier Date (Nov 2026)</label>
+                        <input type="date" id="qualifier-date" name="qualifier_date" min="2026-11-01" max="2026-11-30" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkin-time" class="req-label">Preferred Lobby Check-In Time (14:00 to 22:00)</label>
+                        <input type="time" id="checkin-time" name="checkin_time" min="14:00" max="22:00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roster-count" class="req-label">Total Roster Players (4 Starting + up to 2 Subs)</label>
+                        <input type="number" id="roster-count" name="roster_count" min="4" max="6" value="4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="crest-color">Squad Jersey &amp; HUD Tag Hex Color</label>
+                        <input type="color" id="crest-color" name="crest_color" value="#10b981">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill-rating">Estimated Squad Tactical Rating (1 to 100)</label>
+                        <input type="range" id="skill-rating" name="skill_rating" min="1" max="100" value="75">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="server-region" class="req-label">Primary Server Region &amp; Division</label>
+                        <select id="server-region" name="server_region" required>
+                            <option value="pk-north">Pakistan North — Islamabad / Rawalpindi</option>
+                            <option value="pk-central" selected>Pakistan Central — Lahore / Sheikhupura Division</option>
+                            <option value="pk-south">Pakistan South — Karachi / Hyderabad</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team-logo" class="req-label">Upload Transparent Squad Crest (PNG/JPG)</label>
+                        <input type="file" id="team-logo" name="team_logo" accept=".png,.jpg,.jpeg" required>
+                    </div>
+                </fieldset>
+
+                <!-- Fieldset 3: Mode & Declaration -->
+                <fieldset>
+                    <legend>3. Match Mode, Team Bio &amp; Fair-Play Declaration</legend>
+
+                    <div class="form-group">
+                        <span class="group-label" id="cam-label">Preferred Camera Perspective Mode</span>
+                        <div class="choice-row">
+                            <label class="choice" for="mode-fpp"><input type="radio" id="mode-fpp" name="camera_mode" value="FPP" checked><span>First-Person Perspective (FPP — Competitive Standard)</span></label>
+                        </div>
+                        <div class="choice-row">
+                            <label class="choice" for="mode-tpp"><input type="radio" id="mode-tpp" name="camera_mode" value="TPP"><span>Third-Person Perspective (TPP — Classic)</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="squad-bio" class="req-label">Squad Bio, IGL Strategy &amp; Past Achievements (20 to 300 chars)</label>
+                        <textarea id="squad-bio" name="squad_bio" rows="4" minlength="20" maxlength="300" placeholder="Describe your squad roles and past tournaments..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="choice-row">
+                            <label class="choice" for="rules-consent"><input type="checkbox" id="rules-consent" name="rules_consent" required>
+                            <span>I confirm all squad members are enrolled students and agree to the CBL Anti-Cheat Code.</span></label>
+                        </div>
+                    </div>
+
+                    <div class="submit-row">
+                        <button type="submit" class="submit-btn">Lock In Squad Registration</button>
+                    </div>
+                </fieldset>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Campus Battlegrounds League — Registration Operations | <a href="home.html" class="inline-link">&larr; Back to Home</a></p>
+    </footer>
+
+</body>
+</html>

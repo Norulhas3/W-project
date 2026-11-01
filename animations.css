@@ -1,0 +1,102 @@
+/* ===== CBL shared animations (linked on every page) ===== */
+:root{--cyan:#00f2fe;--violet:#7c3aed}
+html{scroll-behavior:smooth}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* animated grid background */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background-image:linear-gradient(rgba(0,242,254,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.05) 1px,transparent 1px);
+ background-size:48px 48px;animation:gridMove 14s linear infinite}
+@keyframes gridMove{to{background-position:48px 48px}}
+
+/* page-load: header drops in, title flickers once */
+#main-header{animation:dropIn .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dropIn{from{opacity:0;transform:translateY(-30px)}}
+.site-title{animation:flicker 2.4s 0.6s both}
+@keyframes flicker{0%,18%,22%,60%,100%{opacity:1}20%,24%,55%{opacity:.4}}
+.neon-accent{animation:neonPulse 3s ease-in-out infinite}
+@keyframes neonPulse{50%{text-shadow:0 0 18px var(--cyan),0 0 36px var(--cyan)}}
+
+/* nav */
+.nav-link{position:relative;transition:.3s}
+.nav-link:hover{background:rgba(124,58,237,.35);border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 0 12px rgba(0,242,254,.5)}
+.active-link{animation:glowBeat 2.5s ease-in-out infinite}
+@keyframes glowBeat{50%{box-shadow:0 0 20px rgba(124,58,237,1)}}
+
+/* hero image float + shimmering border */
+.hero-img{animation:floaty 5s ease-in-out infinite;transition:.4s}
+@keyframes floaty{50%{transform:translateY(-10px)}}
+.hero-img:hover{box-shadow:0 0 40px var(--cyan);filter:brightness(1.1)}
+#hero-section{position:relative;overflow:hidden}
+#hero-section::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+ background:linear-gradient(100deg,transparent,rgba(255,255,255,.08),transparent);animation:sweep 6s ease-in-out infinite}
+@keyframes sweep{to{left:130%}}
+
+/* buttons */
+.btn-primary,.submit-btn{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.btn-primary:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 24px rgba(0,242,254,.7)}
+.btn-primary:active,.submit-btn:active{transform:scale(.96)}
+.btn-primary::after,.submit-btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn-primary:hover::after,.submit-btn:hover::after{left:140%}
+.btn-primary{animation:ctaPulse 2.2s infinite}
+@keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(0,242,254,.6)}70%,100%{box-shadow:0 0 0 16px rgba(0,242,254,0)}}
+
+/* links */
+.inline-link{transition:.25s}
+.inline-link:hover{color:#fff;text-shadow:0 0 8px var(--cyan);border-bottom-style:solid}
+
+/* prize cards */
+.prize-card{transition:transform .3s,box-shadow .3s}
+.prize-card:hover{transform:translateX(10px) scale(1.02);box-shadow:0 0 22px rgba(0,242,254,.25)}
+.gold-tier:hover{box-shadow:0 0 24px rgba(250,204,21,.45)}
+.prize-amount{display:inline-block;animation:amountGlow 2.5s ease-in-out infinite}
+@keyframes amountGlow{50%{text-shadow:0 0 12px #4ade80}}
+
+/* ticker (marquee) */
+.ticker{overflow:hidden;white-space:nowrap;background:#06070b;border-bottom:1px solid var(--violet);padding:8px 0}
+.ticker-track{display:inline-block;padding-left:100%;animation:marquee 28s linear infinite;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:14px}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-100%)}}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center}
+.stat{padding:18px;border:1px solid #334155;border-radius:10px;background:rgba(30,41,59,.6);transition:.3s}
+.stat:hover{transform:translateY(-6px) rotate(-1deg);border-color:var(--cyan)}
+.stat b{font:800 34px 'Orbitron',sans-serif;color:var(--cyan);display:block}
+
+/* timeline / FAQ */
+.timeline{border-left:3px solid var(--violet);padding-left:20px;margin:0}
+.timeline li{list-style:none;margin-bottom:16px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);animation:dot 2s infinite}
+@keyframes dot{0%{box-shadow:0 0 0 0 rgba(0,242,254,.7)}100%{box-shadow:0 0 0 14px transparent}}
+details{background:rgba(11,12,20,.8);border:1px solid #334155;border-radius:8px;padding:10px 16px;margin-bottom:10px;transition:.3s}
+details[open]{border-color:var(--cyan)}
+summary{cursor:pointer;font-weight:700;color:#fff}
+details[open] p{animation:fadeDown .4s}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-8px)}}
+
+/* footer + live dot + loading shimmer */
+footer a{transition:.3s}
+img{background:linear-gradient(90deg,#111526 25%,#1e293b 50%,#111526 75%);background-size:200% 100%;animation-name:shimmer;animation-duration:1.5s;animation-iteration-count:3}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+#to-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:2px solid var(--cyan);background:#0b0c14;color:var(--cyan);font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s;z-index:1500}#to-top:hover{background:var(--cyan);color:#05070c}
+
+/* scroll progress bar */
+html::before{content:"";position:fixed;top:0;left:0;height:4px;width:100%;z-index:2000;transform-origin:left;transform:scaleX(0);
+ background:linear-gradient(90deg,var(--violet),var(--cyan));box-shadow:0 0 10px var(--cyan);animation:progress linear both;animation-timeline:scroll(root)}
+@keyframes progress{to{transform:scaleX(1)}}
+/* scroll reveal (supported browsers only; others just show content) */
+@supports (animation-timeline:view()){
+ section,.prize-card,.stat,.list-box,details,fieldset,.gallery-item{animation:revealUp linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+ @keyframes revealUp{from{opacity:0;transform:translateY(40px)}}
+}
+/* back-to-top link: appears once the page is scrolled */
+#to-top{display:grid;place-items:center;text-decoration:none;opacity:1;transform:none;pointer-events:auto}
+/* CSS typewriter on tagline */
+@media (min-width:601px){.tagline{display:inline-block;overflow:hidden;white-space:nowrap;max-width:100%;border-right:2px solid var(--cyan);animation:typing 3s steps(60) .5s both,caret .8s step-end 6}}
+@keyframes typing{from{max-width:0}to{max-width:100%}}
+@keyframes caret{50%{border-color:transparent}}
+.gallery-item img{cursor:default}
+.gallery-item img:hover,.caster-img-3d:hover,.arena-img-3d:hover{transform:perspective(800px) rotateX(5deg) rotateY(-8deg) scale(1.06)}
