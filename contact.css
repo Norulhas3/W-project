@@ -1,0 +1,151 @@
+/* ==========================================================
+   CONTACT PAGE (contact.css)
+   Concepts: responsive layout mixing Flexbox and Grid, media queries
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    background-color: #06101c;
+    color: #e0f2fe;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* Header and navigation (blue theme, rounded bar with evenly spaced links) */
+.page-header {
+    background: linear-gradient(180deg, #0c2a4a 0%, #06101c 100%);
+    padding: 26px 20px 18px;
+    text-align: center;
+    border-bottom: 2px solid #38bdf8;
+}
+
+.page-header h1 { margin: 0; font-size: 34px; letter-spacing: 2px; }
+.accent { color: #38bdf8; }
+.tagline { color: #7dd3fc; margin: 4px 0 16px; }
+
+.main-nav { max-width: 900px; margin: 0 auto; background-color: #0b1d33; border-radius: 40px; padding: 6px; }
+
+/* Flexbox: links spread evenly across the bar */
+.main-nav ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li { flex: 1 1 auto; }
+
+.main-nav a {
+    display: block;
+    text-align: center;
+    padding: 8px 10px;
+    border-radius: 30px;
+    color: #bae6fd;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.current { background-color: #38bdf8; color: #06101c; }
+
+/* Page layout: Flexbox puts the about section and the form side by side */
+.contact-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.about { flex: 1 1 300px; }
+.form-panel { flex: 2 1 460px; }
+
+.about, .form-panel {
+    background-color: #0b1d33;
+    border: 1px solid #1e4b73;
+    border-radius: 12px;
+    padding: 26px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+}
+
+h2 { margin-top: 0; color: #38bdf8; }
+/* Bootstrap list-group recoloured to match the dark blue theme */
+.about-facts {
+    --bs-list-group-bg: transparent;
+    --bs-list-group-color: #e0f2fe;
+    --bs-list-group-border-color: #1e4b73;
+    padding-left: 0;
+}
+
+/* Form: Grid puts name and email in two columns */
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.field { margin-bottom: 16px; }
+.field label { display: block; font-weight: 700; margin-bottom: 4px; }
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    background-color: #06101c;
+    color: #ffffff;
+    border: 2px solid #1e4b73;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: none; border-color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+
+/* Classes added by contact.js */
+.field input.ok, .field textarea.ok { border-color: #4ade80; }
+.field input.bad, .field textarea.bad { border-color: #f43f5e; }
+.hint { display: block; min-height: 18px; color: #7dd3fc; }
+.hint.bad-text { color: #f43f5e; }
+
+.send-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #0284c7, #38bdf8);
+    color: #06101c;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.send-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.5); }
+.status { text-align: center; font-weight: 700; color: #4ade80; min-height: 24px; }
+
+.page-footer { text-align: center; padding: 20px; border-top: 1px solid #1e4b73; color: #7dd3fc; }
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+    .main-nav { border-radius: 16px; }
+}
+
+@media screen and (max-width: 600px) {
+    .contact-layout { flex-direction: column; margin: 24px auto; }
+    .page-header h1 { font-size: 26px; }
+    .main-nav li { flex: 1 1 45%; }
+}

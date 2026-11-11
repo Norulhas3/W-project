@@ -1,0 +1,154 @@
+/* ==========================================================
+   SERVICES PAGE (services.css)
+   Concepts: Flexbox (wrap, justify, align, gap), transform, transition
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rajdhani:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    background-color: #120c05;
+    color: #f5e9d6;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Header and navigation (amber theme, square buttons) */
+.page-header {
+    background: linear-gradient(135deg, #2a1705 0%, #120c05 100%);
+    border-bottom: 4px solid #f59e0b;
+    padding: 30px 20px 20px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.accent { color: #f59e0b; }
+.tagline { color: #d6b98c; margin: 4px 0 18px; }
+
+/* Flexbox navigation bar */
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav a {
+    display: block;
+    color: #f5e9d6;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 16px;
+    border: 2px solid #f59e0b;
+    border-radius: 0;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.site-nav a:hover,
+.site-nav a.current {
+    background-color: #f59e0b;
+    color: #1a1005;
+    transform: skewX(-8deg);
+}
+
+.intro {
+    max-width: 700px;
+    margin: 40px auto 10px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.intro h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #f59e0b;
+    font-size: 32px;
+}
+
+/* Card list: flexbox with wrap, justify-content, align-items and gap */
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+    max-width: 1200px;
+    margin: 30px auto 50px;
+    padding: 0 20px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+    max-width: 370px;
+    background-color: #1d1409;
+    border: 1px solid #5c3d12;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s;
+}
+
+/* transform + transition on hover */
+.service-card:hover {
+    transform: translateY(-10px) rotate(-1deg) scale(1.03);
+    border-color: #f59e0b;
+    box-shadow: 0 16px 30px rgba(245, 158, 11, 0.3);
+}
+
+.card-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-img { transform: scale(1.08); }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 18px 20px 20px;
+}
+
+.card-body h3 {
+    font-family: 'Oswald', sans-serif;
+    color: #fbbf24;
+    margin: 0 0 8px;
+}
+
+.card-body p { margin: 0 0 16px; flex-grow: 1; }
+
+.card-link {
+    align-self: flex-start;
+    color: #1a1005;
+    background-color: #f59e0b;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.card-link:hover { background-color: #fbbf24; transform: translateX(6px); }
+
+.page-footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #5c3d12;
+    color: #d6b98c;
+}
+
+@media screen and (max-width: 600px) {
+    .page-header h1 { font-size: 28px; }
+    .service-card { max-width: 100%; }
+}

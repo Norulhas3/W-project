@@ -1,0 +1,175 @@
+/* ==========================================================
+   PORTFOLIO PAGE (portfolio.css)
+   Concepts: CSS Grid (grid-template-areas), @keyframes, media queries
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    background-color: #12070f;
+    color: #fbe7f3;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Header and navigation (pink theme, underline that grows) */
+.page-header {
+    background: radial-gradient(circle at top, #4a0d36 0%, #12070f 70%);
+    padding: 34px 20px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px;
+    letter-spacing: 6px;
+    margin: 0;
+    background: linear-gradient(90deg, #ec4899, #f9a8d4, #ec4899);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: titleShift 5s linear infinite;
+}
+
+.accent { color: inherit; }
+.tagline { color: #f9a8d4; letter-spacing: 3px; text-transform: uppercase; font-size: 15px; }
+
+.top-menu { border-top: 1px solid #5b1e46; margin-top: 20px; }
+
+.top-menu ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-menu a {
+    position: relative;
+    display: block;
+    padding: 14px 18px;
+    color: #f9a8d4;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.top-menu a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 0;
+    height: 3px;
+    background-color: #ec4899;
+    transition: width 0.35s, left 0.35s;
+}
+
+.top-menu a:hover::after,
+.top-menu a.current::after { width: 70%; left: 15%; }
+.top-menu a:hover, .top-menu a.current { color: #ffffff; }
+
+.gallery-intro { text-align: center; padding: 34px 20px 10px; }
+.gallery-intro h2 { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 3px; color: #ec4899; margin: 0; }
+
+/* Gallery: CSS Grid with named areas */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    grid-template-areas:
+        "a a b c"
+        "a a d d"
+        "e f d d";
+    gap: 14px;
+    max-width: 1150px;
+    margin: 20px auto 50px;
+    padding: 0 20px;
+}
+
+.shot-a { grid-area: a; }
+.shot-b { grid-area: b; }
+.shot-c { grid-area: c; }
+.shot-d { grid-area: d; }
+.shot-e { grid-area: e; }
+.shot-f { grid-area: f; }
+
+.shot {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #5b1e46;
+    animation: popIn 0.8s ease-out both;
+}
+
+.shot-b { animation-delay: 0.1s; }
+.shot-c { animation-delay: 0.2s; }
+.shot-d { animation-delay: 0.3s; }
+.shot-e { animation-delay: 0.4s; }
+.shot-f { animation-delay: 0.5s; }
+
+.shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.shot:hover img { transform: scale(1.12); }
+
+.shot figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(18, 7, 15, 0.95), transparent);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.shot:hover figcaption { transform: translateY(0); }
+.shot figcaption span { color: #f9a8d4; font-size: 15px; }
+
+/* Keyframe animations */
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes titleShift {
+    to { background-position: 200% center; }
+}
+
+.page-footer { text-align: center; padding: 20px; border-top: 1px solid #5b1e46; color: #f9a8d4; }
+
+/* Breakpoint 1: tablets */
+@media screen and (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "a a"
+            "b c"
+            "d d"
+            "e f";
+    }
+    .page-header h1 { font-size: 44px; }
+}
+
+/* Breakpoint 2: phones (captions always visible, single column) */
+@media screen and (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        grid-template-areas: "a" "b" "c" "d" "e" "f";
+    }
+    .shot figcaption { transform: translateY(0); }
+    .page-header h1 { font-size: 32px; letter-spacing: 3px; }
+}
